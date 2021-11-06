@@ -1,13 +1,14 @@
 #!/bin/bash
 
-source 00-vars.sh
-
+# проверка на root права
 if [[ "${EUID}" != 0 ]]
 then
 	echo " "
         echo -e "\e[1;31m This script requires root privileges, trying to use sudo \e[0m"
 	exit $?
 fi
+
+source 00-vars.sh
 
 if [ ! -d ${BUILD}/images ]; then
 	mkdir -p ${BUILD}/images
